@@ -72,3 +72,6 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Plugin has it's own GetHub
+Plugins/TAB_MultiplayerPlugIn/
