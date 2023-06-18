@@ -39,5 +39,30 @@ YouTube Link: https://www.youtube.com/watch?v=Fd9m4cG2hnU
 TODO: figure out how to change between EGS, Steam, and LAN (Null) and add that funcationality to the plugin.
 Goal: Plug-in can support cross-platform play.
 
+35. Assets
+
+How to use assets that aren't compatible with current version.
+Example is Military Weapons Silver compatable with 4.4-4.27
+- Install an Unreal version that is in the compatable range.
+- Create a New Project blank blueprint to keep size and complexity down.
+- Add the Market Place assets to the new project
+- Find the created folder under Content and right-click it, select Migrate... from the drop-down list
+- click OK to AssetReport
+- browse to the Content folder of the UE5.2 project you want to use it in and click Select Folder
+- watch for the msg: Content Migration Completed Successfully
+
+36. Retargeting Animations in Unreal Engine 5
+
+Retargeting Animations in Unreal Engine 5
+There is a new way to retarget animations in Unreal Engine 5.
+
+I cover this new process in a YouTube video. The link is in the resources for the next lecture, titled: Retargeting Animations in Unreal Engine 5.
+
+I recommend using the new way, as it's greatly improved. Feel free to use the method in the following lecture instead if you wish.
+
+Happy Dev'ing,
+
+Stephen
+YouTube Link: https://www.youtube.com/watch?v=_sLnCqBaElI
 
 
