@@ -1,0 +1,43 @@
+31. What to Add to DefaultEngine.ini
+
+What to Add to DefaultEngine.ini
+[/Script/Engine.GameEngine]
++NetDriverDefinitions=(DefName="GameNetDriver",DriverClassName="OnlineSubsystemSteam.SteamNetDriver",DriverClassNameFallback="OnlineSubsystemUtils.IpNetDriver")
+ 
+[OnlineSubsystem]
+DefaultPlatformService=Steam
+ 
+[OnlineSubsystemSteam]
+bEnabled=true
+SteamDevAppId=480
+bInitServerOnClient=true
+ 
+[/Script/OnlineSubsystemSteam.SteamNetDriver]
+NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
+Make sure you get this part right. If you can't create sessions, come back to this and make sure your DefaultEngine.ini has these lines added to it.
+
+Take extra note of the line:
+
+bInitServerOnClient=true
+
+Make sure this is set to true to make sessions. Don't forget to generate Visual Studio project files if you make changes.
+
+32. Optional: Use EOS (Epic Online Services) Instead of Steam
+
+Optional: Use EOS (Epic Online Services) Instead of Steam
+An alternative to Steam is Epic Online Services (EOS). Follow the link in the resources to this video to a tutorial on setting up EOS for your project!
+
+NOTE: The lines you add to DefaultEngine.ini will be different than what you add when configuring your project for Steam, as indicated in the video. 
+Also, download the supplemental .pdf file for a list of steps to follow as well.
+
+Some students have had connection issues with Steam. If you experience issues, I recommend configuring your project for EOS instead.
+
+All of the code throughout this course, including the plugin, works for EOS! So you won't need to do anything different other than the initial setup for EOS!
+
+YouTube Link: https://www.youtube.com/watch?v=Fd9m4cG2hnU
+
+TODO: figure out how to change between EGS, Steam, and LAN (Null) and add that funcationality to the plugin.
+Goal: Plug-in can support cross-platform play.
+
+
+
