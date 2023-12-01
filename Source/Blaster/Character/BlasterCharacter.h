@@ -31,6 +31,11 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void MoveForward(float Value);
+	void MoveRight(float Value);
+	void Turn(float Value);
+	void LookUp(float Value);
+
 public:
 
 };

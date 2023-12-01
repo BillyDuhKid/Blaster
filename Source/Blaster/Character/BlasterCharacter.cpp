@@ -30,17 +30,55 @@ void ABlasterCharacter::BeginPlay()
 	
 }
 
+// Called to bind functionality to input
+void ABlasterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	// Binding functions to Names in Editor: Project Settings>Engine>Input Action Mappings & Axis Mappings
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ABlasterCharacter::Jump);
+
+	PlayerInputComponent->BindAxis("MoveForward", this, &ABlasterCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ABlasterCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("Turn", this, &ABlasterCharacter::Turn);
+	PlayerInputComponent->BindAxis("LookUp", this, &ABlasterCharacter::LookUp);
+}
+
+void ABlasterCharacter::MoveForward(float Value)
+{
+	// gets the forward Direction perallel to the ground in the direction of the rotated controller
+	if (Controller != nullptr && Value != 0.f)
+	{
+		const FRotator YawRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
+		const FVector Direction(FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X));
+		AddMovementInput(Direction, Value);
+	}
+}
+
+void ABlasterCharacter::MoveRight(float Value)
+{
+	// same as MoveForward, but getting Y Axis instead of X Axis
+	if (Controller != nullptr && Value != 0.f)
+	{
+		const FRotator YawRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
+		const FVector Direction(FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y));
+		AddMovementInput(Direction, Value);
+	}
+}
+
+void ABlasterCharacter::Turn(float Value)
+{
+	AddControllerYawInput(Value);
+}
+
+void ABlasterCharacter::LookUp(float Value)
+{
+	AddControllerPitchInput(Value);
+}
+
 // Called every frame
 void ABlasterCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
-
-// Called to bind functionality to input
-void ABlasterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
-
