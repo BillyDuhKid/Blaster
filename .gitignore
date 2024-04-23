@@ -75,4 +75,4 @@ Plugins/*/Intermediate/*
 DerivedDataCache/*
 
 # Plugin has it's own GetHub
-Plugins/TAB_MultiplayerPlugIn/
+Plugins/TAB_Game/
