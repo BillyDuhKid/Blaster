@@ -1,17 +1,16 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Epic Games, Inc. All Rights Reserved.
 
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameModes/TAB_GameMode.h"
+#include "GameFramework/GameModeBase.h"
 #include "BlasterGameMode.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class BLASTER_API ABlasterGameMode : public ATAB_GameMode
+UCLASS(minimalapi)
+class ABlasterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	ABlasterGameMode();
 };

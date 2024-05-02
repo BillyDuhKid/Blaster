@@ -13,5 +13,6 @@ UCLASS()
 class BLASTER_API ABlasterLobbyGameMode : public ATAB_LobbyGameMode
 {
 	GENERATED_BODY()
-	
+public:
+	ABlasterLobbyGameMode();
 };
