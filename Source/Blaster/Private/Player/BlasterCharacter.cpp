@@ -14,7 +14,6 @@
 #include "Net/UnrealNetwork.h"	//DOREPLIFETIME
 #include "Weapon/Weapon.h"
 #include "BlasterComponents/CombatComponent.h"
-#include "Engine/Engine.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -202,9 +201,27 @@ void ABlasterCharacter::Look(const FInputActionValue& Value)
 
 void ABlasterCharacter::EquipButtonPressed()
 {
-	if (GEngine) { GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, FString::Printf(TEXT("EquipButtonPressed()"))); }
+	if (Combat)
+	{
+		// if HasAuthority() we're playing on the server and don't need to call the server function.
+		if (HasAuthority())
+		{
+			Combat->EquipWeapon(OverlappingWeapon);
+		}
+		else
+		{
+			// if HasAuthority() is false, we're playing on the client need to make the RPC call to the server.
+			ServerEquipButtonPress();
+		}
+	}
+}
 
-	if (Combat && HasAuthority())
+// RPC call RPC stands for Remote Procedure Call. Desigened to be called from one PC and executed on another.
+// in this case the client calls the fucnction and the server executes the function.
+// Note: _Implementation is a suffix that is required by Unreal Engine to implement a Server RPC function.
+void ABlasterCharacter::ServerEquipButtonPress_Implementation()
+{
+	if (Combat)
 	{
 		Combat->EquipWeapon(OverlappingWeapon);
 	}

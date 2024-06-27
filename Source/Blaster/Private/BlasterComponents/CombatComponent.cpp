@@ -6,6 +6,7 @@
 #include "Player/BlasterCharacter.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Engine/SkeletalMeshSocket.h"
+#include "Components/SphereComponent.h"
 
 // Sets default values for this component's properties
 UCombatComponent::UCombatComponent()
@@ -32,14 +33,13 @@ void UCombatComponent::EquipWeapon(AWeapon* WeaponToEquip)
 
 	EquippedWeapon = WeaponToEquip;
 	EquippedWeapon->SetWeaponState(EWeaponState::EWS_Equipped);
-	const USkeletalMeshSocket* HandSocket = Character->GetMesh()->GetSocketByName("RightHandSocket");
+	USkeletalMeshComponent* CharacterMesh = Character->GetMesh();
+	if (CharacterMesh == nullptr){ return; }
+	const USkeletalMeshSocket* HandSocket = CharacterMesh->GetSocketByName("RightHandSocket");
 	if (HandSocket)
 	{
-		HandSocket->AttachActor(WeaponToEquip, Character->GetMesh());
+		HandSocket->AttachActor(WeaponToEquip, CharacterMesh);
 	}
 
 	EquippedWeapon->SetOwner(Character);
-	EquippedWeapon->ShowPickupWidget(false);
-
 }
-

@@ -91,4 +91,7 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	class UCombatComponent* Combat;
 
+	// Server RPC call. Reliable means it is garanteed to be called on the server. Gets confermation frm the server.
+	UFUNCTION(Server, Reliable)
+	void ServerEquipButtonPress();
 };
