@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/GameModeBase.h"
+#include "GameModes/TAB_GameMode.h"
 #include "BlasterGameMode.generated.h"
 
 UCLASS(minimalapi)
-class ABlasterGameMode : public AGameModeBase
+class ABlasterGameMode : public ATAB_GameMode
 {
 	GENERATED_BODY()
 

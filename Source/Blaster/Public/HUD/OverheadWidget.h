@@ -7,7 +7,7 @@
 #include "OverheadWidget.generated.h"
 
 /**
- * 
+ * TODO: depending on how complex this gets consider moving it to TAB_Game plugin.
  */
 UCLASS()
 class BLASTER_API UOverheadWidget : public UUserWidget
