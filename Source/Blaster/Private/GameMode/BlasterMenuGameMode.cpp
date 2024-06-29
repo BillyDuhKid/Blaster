@@ -21,6 +21,8 @@ void ABlasterMenuGameMode::BeginPlay()
 		GameCreator->SetGameModes(GameModes);
 		TArray <FGameMapStruct> LobbyMaps{ FGameMapStruct(FText::FromString("Blaster Lobby"), "/Game/Maps/Lobby") };
 		GameCreator->SetLobbyGameModes(LobbyMaps);
+		TArray <FGameMapStruct> MainMenuMaps{ FGameMapStruct(FText::FromString("Blaster Menu Map"), "/Game/Maps/BlasterStartUpMap") };
+		GameCreator->SetMainMenuMaps(MainMenuMaps);
 	}
 
 	Super::BeginPlay();
